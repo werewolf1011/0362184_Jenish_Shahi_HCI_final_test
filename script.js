@@ -676,7 +676,7 @@ function showDiagnosisResult(type) {
                     
                     <div style="background-color: #f8f9fa; padding: 1rem; border-radius: 5px;">
                         <h4 style="color: var(--secondary); margin-bottom: 0.5rem;">Disclaimer</h4>
-                        <p style="font-size: 0.9rem;">This AI analysis is for informational purposes only and should not replace professional medical advice. Always consult with a qualified healthcare provider for diagnosis and treatment.</p>
+                        <p style="font-size: 0.9rem;">This report is sent to your email address. This AI analysis is for informational purposes only and should not replace professional medical advice. Always consult with a qualified healthcare provider for diagnosis and treatment.</p>
                     </div>
                 </div>
                 <div class="modal-footer">
