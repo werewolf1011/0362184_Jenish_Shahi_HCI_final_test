@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediSecure - Smart Healthcare Solutions</title>
+    <!-- css here -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                <span>MediSecure</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#diagnosis">Diagnosis</a></li>
+                    <li><a href="#security">Security</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons" id="authButtons">
+                <button class="login" id="loginBtn">Login</button>
+                <button class="signup" id="signupBtn">Sign Up</button>
+            </div>
+            <div class="user-profile" id="userProfile" style="display: none;">
+                <div class="user-avatar" id="userAvatar">JD</div>
+                <div class="user-dropdown" id="userDropdown">
+                    <a href="#"><i class="fas fa-user"></i> My Profile</a>
+                    <a href="#"><i class="fas fa-history"></i> Diagnosis History</a>
+                    <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="#" class="admin-link" id="adminLink"><i class="fas fa-lock"></i> Admin Panel</a>
+                    <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Rest of your existing HTML content remains the same -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>AI-Powered Healthcare at Your Fingertips</h1>
+            <p>Get accurate medical diagnosis, personalized health recommendations, and 24/7 AI assistance with our cutting-edge healthcare platform.</p>
+            <!-- <button class="cta-button">Start Free Diagnosis</button> -->
+            <a href="#diagnosis"><button class="cta-button">Start Free Diagnosis</button></a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our AI Healthcare Features</h2>
+                <p>MediSecure combines advanced artificial intelligence with medical expertise to provide comprehensive healthcare solutions.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Diagnosis</h3>
+                    <p>Our AI analyzes your symptoms and medical reports to provide accurate preliminary diagnoses and treatment suggestions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h3>Virtual Consultations</h3>
+                    <p>Connect with healthcare professionals for follow-up consultations based on your AI diagnosis results.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>AI Security</h3>
+                    <p>Advanced AI monitors all activity to protect your sensitive health data from unauthorized access.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <h3>Medication Tracking</h3>
+                    <p>Get personalized medication reminders and track your treatment progress with our smart system.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Health Analytics</h3>
+                    <p>Visualize your health trends over time with our comprehensive analytics dashboard.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Hybrid Chatbot</h3>
+                    <p>Our smart assistant handles simple queries while seamlessly transferring complex cases to human experts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="diagnosis-section" id="diagnosis">
+        <div class="container diagnosis-container">
+            <div class="diagnosis-content">
+                <h2>Remote AI Medical Diagnosis</h2>
+                <p>Upload your medical reports or describe your symptoms, and our advanced AI will analyze your condition to provide a preliminary diagnosis and recommended next steps.</p>
+                <p>Our system is trained on millions of medical cases and continuously updated with the latest medical research to ensure accurate results.</p>
+                <div class="diagnosis-options">
+                    <div class="diagnosis-option" id="upload-reports">
+                        <i class="fas fa-file-upload"></i>
+                        <h4>Upload Reports</h4>
+                        <p>Lab results, scans, or doctor notes</p>
+                    </div>
+                    <div class="diagnosis-option" id="describe-symptoms">
+                        <i class="fas fa-comment-medical"></i>
+                        <h4>Describe Symptoms</h4>
+                        <p>Tell us what you're experiencing</p>
+                    </div>
+                </div>
+            </div>
+            <div class="diagnosis-image">
+                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="AI Diagnosis">
+            </div>
+        </div>
+    </section>
+ 
+    
+    <!-- Security Section -->
+    <section class="security-section" id="security">
+        <div class="container">
+            <div class="section-title">
+                <h2>Advanced AI Security</h2>
+                <p>Your health data is protected by our multi-layered AI security system that monitors for threats 24/7.</p>
+            </div>
+            
+            <div class="security-features">
+                <div class="security-card">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Authentication Monitoring</h3>
+                    <p>AI tracks all login attempts and detects suspicious patterns to prevent unauthorized access to your account.</p>
+                </div>
+                <div class="security-card">
+                    <i class="fas fa-bug"></i>
+                    <h3>Injection Detection</h3>
+                    <p>Real-time scanning for SQL injection, XSS, and other attacks with immediate blocking of malicious requests.</p>
+                </div>
+                <div class="security-card">
+                    <i class="fas fa-bell"></i>
+                    <h3>Instant Alerts</h3>
+                    <p>Get notified immediately if our system detects any suspicious activity related to your account.</p>
+                </div>
+                <div class="security-card">
+                    <i class="fas fa-history"></i>
+                    <h3>Activity Logging</h3>
+                    <p>Comprehensive logs of all access and changes to your health data for complete transparency.</p>
+                </div>
+            </div>
+        </div>
+    </section>    
+
+
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Users Say</h2>
+                <p>Thousands of users trust MediSecure for their healthcare needs. Here's what some of them have to say.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The AI diagnosis was surprisingly accurate and matched what my doctor later confirmed. It saved me a trip to the emergency room!"
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah J." class="author-avatar">
+                        <div class="author-info">
+                            <h4>Sarah J.</h4>
+                            <p>New York, USA</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "As someone with a chronic condition, the medication tracking and AI recommendations have been life-changing. I feel more in control of my health."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Michael T." class="author-avatar">
+                        <div class="author-info">
+                            <h4>Michael T.</h4>
+                            <p>London, UK</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The chatbot is incredibly helpful. When it couldn't answer my complex question, I was immediately connected to a human specialist. Best of both worlds!"
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya K." class="author-avatar">
+                        <div class="author-info">
+                            <h4>Priya K.</h4>
+                            <p>Mumbai, India</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MediSecure</h3>
+                    <p>Revolutionizing healthcare through artificial intelligence and innovative technology.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">AI Diagnosis</a></li>
+                        <li><a href="#">Virtual Consultations</a></li>
+                        <li><a href="#">Medication Tracking</a></li>
+                        <li><a href="#">Health Analytics</a></li>
+                        <li><a href="#">Emergency Assistance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Security</a></li>
+                        <li><a href="#">HIPAA Compliance</a></li>
+                        <li><a href="#">AI Ethics</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 MediSecure. All rights reserved. This website is for demonstration purposes only and does not provide actual medical diagnosis.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <button class="chatbot-button" id="chatbotToggle">
+            <i class="fas fa-robot"></i>
+        </button>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <h3>MediSecure Assistant</h3>
+                <button class="chatbot-close" id="chatbotClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="message bot-message">
+                    Hello! I'm your MediSecure assistant. How can I help you today? You can ask me about symptoms, medications, or general health advice.
+                </div>
+                <div class="message bot-message">
+                    For complex medical questions, I'll connect you with a human healthcare professional if needed.
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Type your health question...">
+                <button id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="auth-modal" id="authModal">
+        <div class="auth-modal-content">
+            <div class="auth-tabs">
+                <div class="auth-tab active" id="loginTab">Login</div>
+                <div class="auth-tab" id="signupTab">Sign Up</div>
+            </div>
+            <div class="auth-form">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+                <form id="signupForm" style="display: none;">
+                    <div class="form-group">
+                        <label for="signupName">Full Name</label>
+                        <input type="text" id="signupName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupConfirmPassword">Confirm Password</label>
+                        <input type="password" id="signupConfirmPassword" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                </form>
+            </div>
+            <div class="auth-footer">
+                <span id="authToggleText">Don't have an account? <a href="#" id="authToggleLink">Sign up</a></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Diagnosis Modals -->
+    <div class="modal" id="reportsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Upload Medical Reports</h2>
+                <button class="modal-close" id="closeReportsModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="reportType">Type of Report</label>
+                    <select id="reportType" class="form-control">
+                        <option value="">Select report type</option>
+                        <option value="blood_test">Blood Test</option>
+                        <option value="urine_test">Urine Test</option>
+                        <option value="xray">X-Ray</option>
+                        <option value="mri">MRI Scan</option>
+                        <option value="ct">CT Scan</option>
+                        <option value="ultrasound">Ultrasound</option>
+                        <option value="doctor_notes">Doctor's Notes</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Upload Files</label>
+                    <div class="file-upload" id="fileUploadArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Drag & drop your files here or click to browse</p>
+                        <input type="file" id="medicalFiles" style="display: none;" multiple>
+                    </div>
+                    <div id="fileList" style="margin-top: 1rem;"></div>
+                </div>
+                <div class="form-group">
+                    <label for="additionalInfo">Additional Information</label>
+                    <textarea id="additionalInfo" class="form-control" placeholder="Provide any additional context about these reports..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelReports">Cancel</button>
+                <button class="btn btn-primary" id="submitReports">Submit for Analysis</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="symptomsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Describe Your Symptoms</h2>
+                <button class="modal-close" id="closeSymptomsModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="mainSymptom">Main Symptom</label>
+                    <input type="text" id="mainSymptom" class="form-control" placeholder="e.g. Headache, fever, chest pain...">
+                </div>
+                <div class="form-group">
+                    <label for="symptomDuration">Duration</label>
+                    <select id="symptomDuration" class="form-control">
+                        <option value="">How long have you had these symptoms?</option>
+                        <option value="less_than_day">Less than a day</option>
+                        <option value="1-3_days">1-3 days</option>
+                        <option value="4-7_days">4-7 days</option>
+                        <option value="1-2_weeks">1-2 weeks</option>
+                        <option value="2-4_weeks">2-4 weeks</option>
+                        <option value="1-3_months">1-3 months</option>
+                        <option value="3-6_months">3-6 months</option>
+                        <option value="more_than_6_months">More than 6 months</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="symptomSeverity">Severity</label>
+                    <select id="symptomSeverity" class="form-control">
+                        <option value="">How severe are your symptoms?</option>
+                        <option value="mild">Mild - noticeable but not bothersome</option>
+                        <option value="moderate">Moderate - interferes with daily activities</option>
+                        <option value="severe">Severe - prevents daily activities</option>
+                        <option value="very_severe">Very severe - requires immediate attention</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="otherSymptoms">Other Symptoms</label>
+                    <textarea id="otherSymptoms" class="form-control" placeholder="Describe any other symptoms you're experiencing..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="medicalHistory">Relevant Medical History</label>
+                    <textarea id="medicalHistory" class="form-control" placeholder="Any existing conditions, medications, or allergies we should know about?"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelSymptoms">Cancel</button>
+                <button class="btn btn-primary" id="submitSymptoms">Get AI Diagnosis</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-header">
+            <h2><i class="fas fa-lock"></i> Admin Dashboard</h2>
+            <button class="admin-close" id="adminClose">&times;</button>
+        </div>
+        <div class="admin-nav">
+            <ul>
+                <li><a href="#" class="admin-nav-link active" data-section="security-logs">Security Logs</a></li>
+                <li><a href="#" class="admin-nav-link" data-section="user-management">User Management</a></li>
+                <li><a href="#" class="admin-nav-link" data-section="diagnosis-requests">Diagnosis Requests</a></li>
+                <li><a href="#" class="admin-nav-link" data-section="system-settings">System Settings</a></li>
+            </ul>
+        </div>
+        <div class="admin-content">
+            <div class="admin-section active" id="security-logs">
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h3>Authentication Logs</h3>
+                        <div>
+                            <select id="logFilter" class="form-control" style="width: auto; display: inline-block;">
+                                <option value="all">All Events</option>
+                                <option value="success">Successful Logins</option>
+                                <option value="failed">Failed Attempts</option>
+                                <option value="injection">Injection Attempts</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="admin-card-body">
+                        <div class="table-responsive">
+                            <table id="authLogsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Timestamp</th>
+                                        <th>User</th>
+                                        <th>IP Address</th>
+                                        <th>Event Type</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="authLogsBody">
+                                    <!-- Logs will be inserted here by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h3>Security Alerts</h3>
+                    </div>
+                    <div class="admin-card-body">
+                        <div class="table-responsive">
+                            <table id="securityAlertsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Timestamp</th>
+                                        <th>Alert Type</th>
+                                        <th>Severity</th>
+                                        <th>Description</th>
+                                        <th>Action Taken</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="securityAlertsBody">
+                                    <!-- Alerts will be inserted here by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="admin-section" id="user-management">
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h3>User Management</h3>
+                    </div>
+                    <div class="admin-card-body">
+                        <p>User management content will go here</p>
+                    </div>
+                </div>
+            </div>
+            <div class="admin-section" id="diagnosis-requests">
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h3>Diagnosis Requests</h3>
+                    </div>
+                    <div class="admin-card-body">
+                        <p>Diagnosis requests content will go here</p>
+                    </div>
+                </div>
+            </div>
+            <div class="admin-section" id="system-settings">
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h3>System Settings</h3>
+                    </div>
+                    <div class="admin-card-body">
+                        <p>System settings content will go here</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Security Alert -->
+    <div class="security-alert" id="securityAlert">
+        <div class="alert-header">
+            <h4><i class="fas fa-exclamation-triangle"></i> Security Alert</h4>
+            <button class="alert-close" id="closeAlert">&times;</button>
+        </div>
+        <p id="alertMessage">Our system detected unusual activity from your account. Please verify your identity.</p>
+    </div>
+    <!-- script here -->
+    <script src="script.js"></script>
+
+</body>
+</html>
