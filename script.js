@@ -9,7 +9,6 @@ const userDropdown = document.getElementById('userDropdown');
 const logoutBtn = document.getElementById('logoutBtn');
 const adminLink = document.getElementById('adminLink');
 const adminPanel = document.getElementById('adminPanel');
-const adminClose = document.getElementById('adminClose');
 const loginTab = document.getElementById('loginTab');
 const signupTab = document.getElementById('signupTab');
 const loginForm = document.getElementById('loginForm');
@@ -207,30 +206,68 @@ adminLink.addEventListener('click', (e) => {
         userDropdown.classList.remove('show');
         loadAdminPanel();
     }
+    // Initialize charts immediately when admin panel opens
+    if (!window.chartsInitialized) {
+        initializeCharts();
+        window.chartsInitialized = true;
+    }
+
+    // Make sure dashboard is visible
+    document.querySelectorAll('.admin-section').forEach(section => {
+        section.style.display = 'none';
+    });
+    document.getElementById('dashboardSection').style.display = 'block';
+
+    // Update active tab
+    document.querySelectorAll('.admin-nav a').forEach(navLink => {
+        navLink.classList.remove('active');
+    });
+    document.getElementById('dashboardTab').classList.add('active');
+
 });
 
-adminClose.addEventListener('click', () => {
-    adminPanel.style.display = 'none';
-});
-
-// Admin navigation
-document.querySelectorAll('.admin-nav-link').forEach(link => {
+// Admin navigation functionality
+document.querySelectorAll('.admin-nav a').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
-        const section = e.target.getAttribute('data-section');
 
-        // Update active nav link
-        document.querySelectorAll('.admin-nav-link').forEach(navLink => {
+        // Get the section ID from the clicked link
+        const sectionId = e.target.id.replace('Tab', 'Section');
+
+        // Hide all sections
+        document.querySelectorAll('.admin-section').forEach(section => {
+            section.style.display = 'none';
+        });
+
+        // Show the selected section
+        document.getElementById(sectionId).style.display = 'block';
+
+        // Update active state in navigation
+        document.querySelectorAll('.admin-nav a').forEach(navLink => {
             navLink.classList.remove('active');
         });
         e.target.classList.add('active');
 
-        // Show selected section
-        document.querySelectorAll('.admin-section').forEach(sec => {
-            sec.classList.remove('active');
-        });
-        document.getElementById(section).classList.add('active');
+        // Update the header title
+        document.querySelector('.admin-title').textContent = e.target.textContent;
+
+        // Initialize charts if dashboard is selected
+        if (sectionId === 'dashboardSection' && !window.chartsInitialized) {
+            initializeCharts();
+            window.chartsInitialized = true;
+        }
     });
+});
+
+// Back to home button
+document.getElementById('backToHome').addEventListener('click', () => {
+    document.getElementById('adminPanel').style.display = 'none';
+});
+
+// Initialize with dashboard visible by default
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('dashboardSection').style.display = 'block';
+    document.getElementById('dashboardTab').classList.add('active');
 });
 
 // Load admin panel data
@@ -373,7 +410,6 @@ closeAlert.addEventListener('click', () => {
     securityAlert.style.display = 'none';
 });
 
-
 function showAlert(title, message, type = "danger") {
     const securityAlert = document.getElementById("securityAlert");
     const alertMessage = document.getElementById("alertMessage");
@@ -383,11 +419,14 @@ function showAlert(title, message, type = "danger") {
 
     // Set background color based on type
     if (type === "success") {
-        securityAlert.style.backgroundColor = "green";
+        securityAlert.classList.add("success-alert");
+        securityAlert.classList.remove("warning-alert", "danger-alert");
     } else if (type === "warning") {
-        securityAlert.style.backgroundColor = "orange";
+        securityAlert.classList.add("warning-alert");
+        securityAlert.classList.remove("success-alert", "danger-alert");
     } else {
-        securityAlert.style.backgroundColor = "red"; // Default for danger
+        securityAlert.classList.add("danger-alert");
+        securityAlert.classList.remove("success-alert", "warning-alert");
     }
 
     securityAlert.style.display = "block";
@@ -400,15 +439,13 @@ function showAlert(title, message, type = "danger") {
     }, 5000);
 }
 
-
-
 // Simulate security alerts at random intervals
 function simulateSecurityAlerts() {
-    // const alerts = [
-    //     {title: "New Login", message: "New login detected from your account from IP 192.168.1.105"},
-    //     {title: "Security Update", message: "Our system just blocked a potential brute force attack"},
-    //     {title: "System Notice", message: "All systems are operating normally. No security issues detected."}
-    // ];
+    const alerts = [
+        { title: "New Login", message: "New login detected from your account from IP 192.168.1.105", type: "success" },
+        { title: "Security Update", message: "Our system just blocked a potential brute force attack", type: "warning" },
+        { title: "System Notice", message: "All systems are operating normally. No security issues detected.", type: "success" }
+    ];
 
     const times = [10000, 30000, 45000, 60000, 90000];
 
@@ -416,7 +453,7 @@ function simulateSecurityAlerts() {
         setTimeout(() => {
             if (currentUser) {
                 const alert = alerts[Math.floor(Math.random() * alerts.length)];
-                showAlert(alert.title, alert.message);
+                showAlert(alert.title, alert.message, alert.type);
             }
         }, time);
     });
@@ -425,7 +462,6 @@ function simulateSecurityAlerts() {
 // Start security alerts after page loads
 setTimeout(simulateSecurityAlerts, 5000);
 
-// Rest of your existing JavaScript (chatbot, diagnosis modals, etc.) remains the same
 // Chatbot functionality
 const chatbotToggle = document.getElementById('chatbotToggle');
 const chatbotWindow = document.getElementById('chatbotWindow');
@@ -798,4 +834,174 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             behavior: 'smooth'
         });
     });
+});
+
+// Initialize admin dashboard charts
+function initializeCharts() {
+    // Load Chart.js if not already loaded
+    if (typeof Chart === 'undefined') {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+        script.onload = createCharts;
+        document.head.appendChild(script);
+    } else {
+        createCharts();
+    }
+}
+
+function createCharts() {
+    // User Activity Chart (Line Chart)
+    const userActivityCtx = document.getElementById('userActivityChart').getContext('2d');
+    new Chart(userActivityCtx, {
+        type: 'line',
+        data: {
+            labels: Array.from({ length: 30 }, (_, i) => `Day ${i + 1}`),
+            datasets: [
+                {
+                    label: 'Diagnosis Requests',
+                    data: Array.from({ length: 30 }, () => Math.floor(Math.random() * 200) + 100),
+                    borderColor: '#2a9d8f',
+                    backgroundColor: 'rgba(42, 157, 143, 0.1)',
+                    tension: 0.3,
+                    fill: true
+                },
+                {
+                    label: 'Chatbot Queries',
+                    data: Array.from({ length: 30 }, () => Math.floor(Math.random() * 300) + 150),
+                    borderColor: '#e9c46a',
+                    backgroundColor: 'rgba(233, 196, 106, 0.1)',
+                    tension: 0.3,
+                    fill: true
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Number of Activities'
+                    }
+                }
+            }
+        }
+    });
+
+    // System Performance Chart (Bar Chart)
+    const systemPerfCtx = document.getElementById('systemPerfChart').getContext('2d');
+    new Chart(systemPerfCtx, {
+        type: 'bar',
+        data: {
+            labels: ['CPU Usage', 'Memory Usage', 'Disk I/O', 'Network', 'AI Processing'],
+            datasets: [{
+                label: 'Performance Metrics',
+                data: [65, 45, 30, 25, 75],
+                backgroundColor: [
+                    'rgba(42, 157, 143, 0.7)',
+                    'rgba(233, 196, 106, 0.7)',
+                    'rgba(231, 111, 81, 0.7)',
+                    'rgba(38, 70, 83, 0.7)',
+                    'rgba(108, 117, 125, 0.7)'
+                ],
+                borderColor: [
+                    'rgba(42, 157, 143, 1)',
+                    'rgba(233, 196, 106, 1)',
+                    'rgba(231, 111, 81, 1)',
+                    'rgba(38, 70, 83, 1)',
+                    'rgba(108, 117, 125, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function (context) {
+                            return context.parsed.y + '%';
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    title: {
+                        display: true,
+                        text: 'Percentage (%)'
+                    }
+                }
+            }
+        }
+    });
+
+    // Diagnosis Distribution Chart (Doughnut Chart)
+    const diagnosisCtx = document.getElementById('diagnosisChart').getContext('2d');
+    new Chart(diagnosisCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Cardiology', 'Neurology', 'Pulmonology', 'Gastroenterology', 'Dermatology', 'Other'],
+            datasets: [{
+                data: [25, 15, 20, 15, 10, 15],
+                backgroundColor: [
+                    'rgba(42, 157, 143, 0.7)',
+                    'rgba(233, 196, 106, 0.7)',
+                    'rgba(231, 111, 81, 0.7)',
+                    'rgba(38, 70, 83, 0.7)',
+                    'rgba(108, 117, 125, 0.7)',
+                    'rgba(134, 142, 150, 0.7)'
+                ],
+                borderColor: [
+                    'rgba(42, 157, 143, 1)',
+                    'rgba(233, 196, 106, 1)',
+                    'rgba(231, 111, 81, 1)',
+                    'rgba(38, 70, 83, 1)',
+                    'rgba(108, 117, 125, 1)',
+                    'rgba(134, 142, 150, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'right',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function (context) {
+                            return context.label + ': ' + context.raw + '%';
+                        }
+                    }
+                }
+            },
+            cutout: '60%'
+        }
+    });
+}
+
+
+// Refresh button functionality
+document.getElementById('refreshDashboard').addEventListener('click', function () {
+    showAlert("Dashboard Refreshed", "Dashboard data has been refreshed with the latest information.", "success");
 });

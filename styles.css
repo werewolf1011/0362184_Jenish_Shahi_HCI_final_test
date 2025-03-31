@@ -354,7 +354,6 @@ nav ul li a:hover {
     color: var(--secondary);
 }
 
-
 .testimonials {
     padding: 4rem 0;
     background-color: #f8f9fa;
@@ -824,95 +823,177 @@ textarea.form-control {
     overflow-y: auto;
 }
 
-.admin-header {
-    background: linear-gradient(135deg, var(--secondary), var(--primary));
+.admin-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.admin-sidebar {
+    background: var(--secondary);
     color: white;
     padding: 1rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.admin-header h2 {
-    margin-left: 2rem;
-}
-
-.admin-close {
-    background: none;
-    border: none;
+#backToHome {
+    margin-right: 10px;
+    background-color: var(--secondary);
     color: white;
-    font-size: 1.5rem;
-    margin-right: 2rem;
-    cursor: pointer;
+}
+
+.admin-brand {
+    padding: 1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .admin-nav {
-    background-color: var(--light);
-    padding: 1rem 2rem;
-    border-bottom: 1px solid #e9ecef;
-}
-
-.admin-nav ul {
-    display: flex;
-    list-style: none;
-}
-
-.admin-nav li {
-    margin-right: 1.5rem;
+    padding: 1rem 0;
 }
 
 .admin-nav a {
-    color: var(--dark);
-    text-decoration: none;
-    font-weight: 500;
-    padding: 0.5rem 0;
-    border-bottom: 2px solid transparent;
-    transition: all 0.3s ease;
-}
-
-.admin-nav a.active {
-    color: var(--primary);
-    border-bottom-color: var(--primary);
-}
-
-.admin-content {
-    padding: 2rem;
-}
-
-.admin-section {
-    display: none;
-}
-
-.admin-section.active {
     display: block;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    transition: all 0.3s;
 }
 
-.admin-card {
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    margin-bottom: 2rem;
-    overflow: hidden;
+.admin-nav a:hover,
+.admin-nav a.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
 }
 
-.admin-card-header {
-    background-color: var(--light);
-    padding: 1rem;
-    border-bottom: 1px solid #e9ecef;
+.admin-nav a i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+/* Main Content */
+.admin-main {
+    padding: 1.5rem;
+}
+
+.admin-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 2rem;
 }
 
-.admin-card-header h3 {
+.admin-title {
+    font-size: 1.8rem;
     color: var(--secondary);
 }
 
-.admin-card-body {
-    padding: 1rem;
+.admin-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
 }
 
+.admin-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.card-title {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+}
+
+.card-value {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--secondary);
+}
+
+.card-change {
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+}
+
+.card-change.positive {
+    color: #28a745;
+}
+
+.card-change.negative {
+    color: var(--danger);
+}
+
+.chart-container {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.chart-title {
+    font-size: 1.2rem;
+    color: var(--secondary);
+    margin-bottom: 1rem;
+}
+
+.chart-wrapper {
+    position: relative;
+    height: 300px;
+}
+
+/* Security Alert */
+.security-alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 1002;
+    animation: slideIn 0.5s ease;
+}
+
+/* Specific alert types */
+.success-alert {
+    background-color: green;
+}
+
+.warning-alert {
+    background-color: orange;
+}
+
+.danger-alert {
+    background-color: red;
+}
+
+.alert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.alert-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* Table styles for admin */
 .table-responsive {
     overflow-x: auto;
 }
@@ -962,49 +1043,6 @@ tr:hover {
     color: #856404;
 }
 
-/* Security Alert */
-/* .security-alert {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 1rem;
-    background-color: var(--danger);
-    color: white;
-    border-radius: 5px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    display: none;
-    z-index: 1002;
-    animation: slideIn 0.5s ease;
-} */
-
-
-/* Default styles */
-.security-alert {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 1rem;
-    color: white;
-    border-radius: 5px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    display: none;
-    z-index: 1002;
-    animation: slideIn 0.5s ease;
-}
-
-/* Specific alert types */
-.success-alert {
-    background-color: green;
-}
-
-.warning-alert {
-    background-color: orange;
-}
-
-.danger-alert {
-    background-color: red;
-}
-
 @keyframes slideIn {
     from {
         transform: translateX(100%);
@@ -1015,21 +1053,6 @@ tr:hover {
         transform: translateX(0);
         opacity: 1;
     }
-}
-
-.alert-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.5rem;
-}
-
-.alert-close {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.2rem;
-    cursor: pointer;
 }
 
 /* Responsive Styles */
@@ -1082,13 +1105,18 @@ tr:hover {
         height: 400px;
     }
 
-    .admin-nav ul {
-        flex-wrap: wrap;
+    .admin-container {
+        grid-template-columns: 1fr;
     }
 
-    .admin-nav li {
-        margin-bottom: 0.5rem;
+    .admin-sidebar {
+        display: none;
     }
+}
+
+
+#backToHome:hover {
+    background-color: #1a3a4a;
 }
 
 @media (max-width: 576px) {
